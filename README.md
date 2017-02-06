@@ -1,5 +1,6 @@
 # React_ToDoList
 Creating a To-DoList in react using express, postgresql
+@starrpatty28 @brianb1 @sashajustice
 # To Do List
 ## Description
 
@@ -31,4 +32,4 @@ The App: As a user...
 
 #### Stretch Goals/Nice to Have's:
 - [ ] Write the app using ES6 and deploy using babel.
-- [ ] Deploy the app to heroku. 
+- [ ] Deploy the app to heroku.
