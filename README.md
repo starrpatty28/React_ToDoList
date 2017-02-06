@@ -1,6 +1,6 @@
 # React_ToDoList
 Creating a To-DoList in react using express, postgresql
-@starrpatty28 @brianb1 @sashajustice
+ colaborators @starrpatty28 @brianb1 @sashajustice
 # To Do List
 ## Description
 
