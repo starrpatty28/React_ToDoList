@@ -22,11 +22,13 @@ The App: As a user...
 - [ ] I can delete unwanted to do list items.
 - [ ] I can check items off as completed.
 - [ ] I can edit the text on existing to do's.
+
 #### Additional Specs:
 - [ ] Create the back end using node, express and postgresql.
 - [ ] Create a database of to do list items.
 - [X] Follow good Git team behaviors (do all your work on branches & submit pull requests for review before merging to master)
 - [X] The artifact produced is properly licensed, preferably with the [MIT license](https://opensource.org/licenses/MIT).
+
 #### Stretch Goals/Nice to Have's:
 - [ ] Write the app using ES6 and deploy using babel.
 - [ ] Deploy the app to heroku. 
