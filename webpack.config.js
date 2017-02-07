@@ -1,33 +1,34 @@
-var webpack = require ('webpack');
-var path = require ('path');
+var webpack = require('webpack');
+var path = require('path');
 
-module.exports = {    //setting up webpack
-    devtool: 'inline-source-map',  //gives inline numbers incase of errors
-    entry: [    //this is where webpack will look for your files
-        'webpack-dev-server/client?http://127.8.0.1:8080/', //setup for hot reloading and live reloading
+module.exports = {
+    entry: [
+        'webpack-dev-server/client?http://127.0.0.1:8080/',
         'webpack/hot/only-dev-server',
-        './src', //folder where webpack looks for initial pack to run
+        './src/index.js',
     ],
     output: {
-        path: path.join(_dirname, 'public'), //this is where webpack would output our files if we were working in production
-        filename: 'bundle.js' //bundle all your code into one-file
+        path: path.join(__dirname, 'public'),
+        filename: 'bundle.js'
     },
-    resolve: { //where webpack will look for the files to bundle together
-        modulesDirectories: ['node_modules'],
-        extensions: ['', '.js'] //extentsions that webpack will expect
-    }
-    module: {   //where we define our loaders
-        loaders: [
+    resolve: { // webpack looks for the files to bundle together
+        modulesDirectories: ['node_modules', 'src'],
+        extensions: ['', '.js']
+    },
+    module: {
+        loaders: [ // load the modules we'll be using: jsx, node_mod, react-hot ...
         {
-            test: /\.jsx?$/, //for using jsx files
-            exclude: /node_module/,
-            loader: ['react-hot', 'babel?presets[]=react, presets[]=es2015']  //modules you install to help load your app
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+             query: {
+                 presets: ['es2015', 'react']
         }
-        ]
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(), //hot reloading and live reloading
-        new webpack.NoErrorsPlugin()  //webpack will not run if there are any errors
-
+        }
     ]
-};
+},
+    plugins: [ // add plugins independent of webpack
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ]
+}
