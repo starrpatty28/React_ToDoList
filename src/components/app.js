@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default App extends React.Component {  //this is what were calling our component
+export default class App extends React.Component {  //this is what were calling our component
   render () {
-    return (
+    return (   //keeps code organzed, putting divs in there
         <div>
             <h1>React ToDos App</h1>
         </div>
