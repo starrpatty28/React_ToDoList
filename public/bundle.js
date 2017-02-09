@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a8e6a252cf7d024069b9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3c74e68126f194883fad"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -29777,21 +29777,28 @@
 	}, {
 	    task: 'eat dinner',
 	    isCompleted: true
-
 	}];
 
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
 
-	    function App() {
+	    //this is what were calling our component
+	    function App(props) {
 	        _classCallCheck(this, App);
 
-	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	        //super connects it to the parent that it is inheriting from. Standard syntax for setting up the app.
+
+	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props)); // a special method for creationg an object created with a class
+
+
+	        _this.state = { //to update and render components.
+	            todos: todos //referenced from line 4
+	        };
+	        return _this;
 	    }
 
 	    _createClass(App, [{
 	        key: 'render',
-	        //this is what were calling our component
 	        value: function render() {
 	            return (//keeps code organzed, putting divs in there
 	                _react2.default.createElement(
@@ -29802,7 +29809,8 @@
 	                        null,
 	                        'React ToDos App'
 	                    ),
-	                    _react2.default.createElement(_todosList2.default, null)
+	                    _react2.default.createElement(_todosList2.default, { todos: this.state.todos }),
+	                    '  '
 	                )
 	            );
 	        }
@@ -29829,6 +29837,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _todosListHeader = __webpack_require__(257);
+
+	var _todosListHeader2 = _interopRequireDefault(_todosListHeader);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29850,28 +29862,13 @@
 	    key: 'render',
 	    //this is what were calling our component
 	    value: function render() {
+	      console.log(this.props.todos);
+
 	      return (//keeps code organzed, putting divs in there
 	        _react2.default.createElement(
 	          'table',
 	          null,
-	          _react2.default.createElement(
-	            'thead',
-	            null,
-	            _react2.default.createElement(
-	              'tr',
-	              null,
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Task'
-	              ),
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Action'
-	              )
-	            )
-	          )
+	          _react2.default.createElement(_todosListHeader2.default, null)
 	        )
 	      );
 	    }
@@ -29881,6 +29878,73 @@
 	}(_react2.default.Component);
 
 	exports.default = TodosList;
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(79);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TodosListHeader = function (_React$Component) {
+	  _inherits(TodosListHeader, _React$Component);
+
+	  function TodosListHeader() {
+	    _classCallCheck(this, TodosListHeader);
+
+	    return _possibleConstructorReturn(this, (TodosListHeader.__proto__ || Object.getPrototypeOf(TodosListHeader)).apply(this, arguments));
+	  }
+
+	  _createClass(TodosListHeader, [{
+	    key: 'render',
+	    //this is what were calling our component
+	    value: function render() {
+	      return (//keeps code organzed, putting divs in there
+	        _react2.default.createElement(
+	          'thead',
+	          null,
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Task'
+	            ),
+	            '    ',
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Action'
+	            ),
+	            '   '
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return TodosListHeader;
+	}(_react2.default.Component);
+
+	exports.default = TodosListHeader;
 
 /***/ }
 /******/ ]);
