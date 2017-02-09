@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/starrpatty28/React_ToDoList#readme",
   "dependencies": {
+    "lodash": "^4.17.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
