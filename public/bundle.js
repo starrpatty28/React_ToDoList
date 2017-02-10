@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1808e4fd2ffc06bb312a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f31ebbae416a1b7c2520"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -47127,7 +47127,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -47145,47 +47145,81 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var TodosListItem = function (_React$Component) {
-	    _inherits(TodosListItem, _React$Component);
+	  _inherits(TodosListItem, _React$Component);
 
-	    function TodosListItem() {
-	        _classCallCheck(this, TodosListItem);
+	  //this is what were calling our component
+	  function TodosListItem(props) {
+	    _classCallCheck(this, TodosListItem);
 
-	        return _possibleConstructorReturn(this, (TodosListItem.__proto__ || Object.getPrototypeOf(TodosListItem)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (TodosListItem.__proto__ || Object.getPrototypeOf(TodosListItem)).call(this, props));
+
+	    _this.state = {
+	      isEditing: false //usually doesn't set state in (not best practice) set state inside components. better to have top lever component that does all this stuff and we're not using redux which has that philosophy
+	    };
+	    return _this;
+	  }
+
+	  _createClass(TodosListItem, [{
+	    key: 'renderActionsSection',
+	    value: function renderActionsSection() {
+	      if (this.state.isEditing) {
+	        return _react2.default.createElement(
+	          'td',
+	          null,
+	          _react2.default.createElement(
+	            'button',
+	            null,
+	            'Save'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            null,
+	            'Cancel'
+	          )
+	        );
+	      }
+
+	      return (//keeps code organzed, putting divs in there
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: this.onEditClick.bind(this) },
+	            'Edit'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            null,
+	            'Delete'
+	          )
+	        )
+	      );
 	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return (//keeps code organzed, putting divs in there
+	        _react2.default.createElement(
+	          'tr',
+	          null,
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            this.props.task
+	          ),
+	          this.renderActionsSection()
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'onEditClick',
+	    value: function onEditClick() {
+	      this.setState({ isEditing: true });
+	    }
+	  }]);
 
-	    _createClass(TodosListItem, [{
-	        key: 'render',
-	        //this is what were calling our component
-	        value: function render() {
-	            return (//keeps code organzed, putting divs in there
-	                _react2.default.createElement(
-	                    'tr',
-	                    null,
-	                    _react2.default.createElement(
-	                        'td',
-	                        null,
-	                        this.props.task
-	                    ),
-	                    _react2.default.createElement(
-	                        'td',
-	                        null,
-	                        _react2.default.createElement(
-	                            'button',
-	                            null,
-	                            'Edit'
-	                        ),
-	                        _react2.default.createElement(
-	                            'button',
-	                            null,
-	                            'Delete'
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return TodosListItem;
+	  return TodosListItem;
 	}(_react2.default.Component);
 
 	exports.default = TodosListItem;
