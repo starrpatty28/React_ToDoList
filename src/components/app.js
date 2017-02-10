@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateTodo from './create-todo';
 import TodosList from './todos-list';
 
 const todos = [  //creating mock to dos
@@ -25,6 +26,7 @@ export default class App extends React.Component {  //this is what were calling 
     return (   //keeps code organzed, putting divs in there
         <div>
             <h1>React ToDos App</h1>
+            <CreateTodo />
             <TodosList todos={this.state.todos}/>  {/*pass our state .todos into our todo list. see line 19-22*/}
         </div>
     );

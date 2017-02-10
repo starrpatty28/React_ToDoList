@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "91cdc2edf5b548dc538e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1808e4fd2ffc06bb312a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -29758,7 +29758,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _todosList = __webpack_require__(256);
+	var _createTodo = __webpack_require__(256);
+
+	var _createTodo2 = _interopRequireDefault(_createTodo);
+
+	var _todosList = __webpack_require__(257);
 
 	var _todosList2 = _interopRequireDefault(_todosList);
 
@@ -29809,6 +29813,7 @@
 	                        null,
 	                        'React ToDos App'
 	                    ),
+	                    _react2.default.createElement(_createTodo2.default, null),
 	                    _react2.default.createElement(_todosList2.default, { todos: this.state.todos }),
 	                    '  '
 	                )
@@ -29825,31 +29830,17 @@
 /* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _lodash = __webpack_require__(257);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
 
 	var _react = __webpack_require__(79);
 
 	var _react2 = _interopRequireDefault(_react);
-
-	var _todosListHeader = __webpack_require__(258);
-
-	var _todosListHeader2 = _interopRequireDefault(_todosListHeader);
-
-	var _todosListItem = __webpack_require__(259);
-
-	var _todosListItem2 = _interopRequireDefault(_todosListItem);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29869,11 +29860,84 @@
 	  }
 
 	  _createClass(TodosList, [{
+	    key: "render",
+	    //this is what were calling our component
+	    value: function render() {
+	      return (//keeps code organzed, putting divs in there
+	        _react2.default.createElement(
+	          "form",
+	          null,
+	          _react2.default.createElement("input", { type: "text", placeholder: "What do I need to do?" }),
+	          _react2.default.createElement(
+	            "button",
+	            null,
+	            "Create"
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return TodosList;
+	}(_react2.default.Component);
+
+	exports.default = TodosList;
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _lodash = __webpack_require__(258);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var _react = __webpack_require__(79);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _todosListHeader = __webpack_require__(259);
+
+	var _todosListHeader2 = _interopRequireDefault(_todosListHeader);
+
+	var _todosListItem = __webpack_require__(260);
+
+	var _todosListItem2 = _interopRequireDefault(_todosListItem);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//Had problems with page loading looked in all files and finally realized with help that it was in import page. We had misspelling line 8.
+
+	var TodosList = function (_React$Component) {
+	  _inherits(TodosList, _React$Component);
+
+	  function TodosList() {
+	    _classCallCheck(this, TodosList);
+
+	    return _possibleConstructorReturn(this, (TodosList.__proto__ || Object.getPrototypeOf(TodosList)).apply(this, arguments));
+	  }
+
+	  _createClass(TodosList, [{
 	    key: 'renderItems',
 	    //this is what were calling our component
 	    value: function renderItems() {
 	      return _lodash2.default.map(this.props.todos, function (todo, index) {
-	        return _react2.default.createElement(TodosListenItem, _extends({ key: index }, todo));
+	        return _react2.default.createElement(_todosListItem2.default, _extends({ key: index }, todo));
 	      });
 	      ///the triple dot is the spread syntax in es6.
 	    }
@@ -29901,7 +29965,7 @@
 	exports.default = TodosList;
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -46992,7 +47056,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(4)(module)))
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47057,7 +47121,7 @@
 	exports.default = TodosListHeader;
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
