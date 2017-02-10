@@ -28,7 +28,7 @@ export default class TodosListItem extends React.Component {  //this is what wer
     }
 
     render() {
-      return (   //keeps code organzed, putting divs in there
+    new   return (   //keeps code organzed, putting divs in there
         <tr>
             <td>{this.props.task}</td>
             {this.renderActionsSection())}
