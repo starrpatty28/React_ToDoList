@@ -14,14 +14,14 @@ export default class TodosListItem extends React.Component {  //this is what wer
           return (
             <td>
               <button>Save</button>
-              <button>Cancel</button>
+              <button onClick={this.onCancelClick.bind(this)}>Cancel</button>   {/*This is the editing state composed of save and cancel*/}
             </td>
         );
       }
 
         return (   //keeps code organzed, putting divs in there
               <td>
-                 <button onClick={this.onEditClick.bind(this)}>Edit</button>
+                 <button onClick={this.onEditClick.bind(this)}>Edit</button>  {/*When not in editing state its returning to normal buttons "edit & delete"*/}
                  <button>Delete</button>
               </td>
         );
@@ -37,7 +37,10 @@ export default class TodosListItem extends React.Component {  //this is what wer
   }
 
   onEditClick() {
-    this.setState({ isEditing: true });
+    this.setState({ isEditing: true });  //when you hit editing button whatever you put in, make it true "make it stick"
 
+  }
+  onCancelClick() {
+    this.setState({ isEditing: false });  //hiiting cancel takes away the editing state
   }
 }
