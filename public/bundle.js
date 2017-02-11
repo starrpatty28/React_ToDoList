@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f31ebbae416a1b7c2520"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6282159ca5442b4e5468"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -47174,7 +47174,9 @@
 	          _react2.default.createElement(
 	            'button',
 	            null,
-	            'Cancel'
+	            'onClick=',
+	            this.onCancelClick.bind(this),
+	            '>Cancel'
 	          )
 	        );
 	      }
@@ -47216,6 +47218,11 @@
 	    key: 'onEditClick',
 	    value: function onEditClick() {
 	      this.setState({ isEditing: true });
+	    }
+	  }, {
+	    key: 'onCancelClick',
+	    value: function onCancelClick() {
+	      this.setState({ isEditing: false });
 	    }
 	  }]);
 
