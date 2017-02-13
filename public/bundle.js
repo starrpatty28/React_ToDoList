@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d75c8c628870bec81329"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5ab44f1e5d8c2373f632"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -29896,6 +29896,7 @@
 	      event.preventDefault();
 
 	      this.props.createTask(this.refs.createInput.value); //passing the value into the createTask method
+	      this.refs.createInput.value = '';
 	    }
 	  }]);
 
@@ -47181,6 +47182,15 @@
 	  }
 
 	  _createClass(TodosListItem, [{
+	    key: 'renderTaskSection',
+	    value: function renderTaskSection() {
+	      return _react2.default.createElement(
+	        'td',
+	        null,
+	        this.props.task
+	      );
+	    }
+	  }, {
 	    key: 'renderActionsSection',
 	    value: function renderActionsSection() {
 	      if (this.state.isEditing) {
@@ -47226,11 +47236,7 @@
 	        _react2.default.createElement(
 	          'tr',
 	          null,
-	          _react2.default.createElement(
-	            'td',
-	            null,
-	            this.props.task
-	          ),
+	          this.renderTaskSection(),
 	          this.renderActionsSection()
 	        )
 	      );
