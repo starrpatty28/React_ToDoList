@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f613e7da9143c84e3375"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d75c8c628870bec81329"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -29825,7 +29825,7 @@
 	        key: 'createTask',
 	        value: function createTask(task) {
 	            {/*take whatever task and push it through out todos state*/}
-	            this.state.todos({
+	            this.state.todos.push({ //add push to push through the array and not call it an as a function
 	                task: task,
 	                isCompleted: false
 	            });
@@ -29895,7 +29895,7 @@
 	    value: function handleCreate(event) {
 	      event.preventDefault();
 
-	      console.log(this.props.createTask);
+	      this.props.createTask(this.refs.createInput.value); //passing the value into the createTask method
 	    }
 	  }]);
 
