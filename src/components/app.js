@@ -35,7 +35,7 @@ export default class App extends React.Component {  //this is what were calling 
   }
 
     createTask(task) {   {/*take whatever task and push it through out todos state*/}
-        this.state.todos({
+        this.state.todos.push({  //add push to push through the array and not call it an as a function
             task,
             isCompleted: false
         });
