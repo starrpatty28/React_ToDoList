@@ -9,6 +9,21 @@ export default class TodosListItem extends React.Component {  //this is what wer
     };
   }
 
+  renderTaskSection() {
+      const { task, isCompleted } = this.props;  //using task and isCompleted as variables
+
+      const taskStyle = {  //dynamic styling using ES6, its going to be a conditional
+          color: isCompleted ? 'green' : 'red',  //if what is complted is true its going to be green and if false it will be read
+          cursor: 'pointer'  //add a pointer to let us know that it is clickable
+
+
+      }
+
+      return (
+        <td style={taskStyle}>{task}</td>
+      )
+  }
+
     renderActionsSection() {
       if (this.state.isEditing) {
           return (
@@ -30,7 +45,7 @@ export default class TodosListItem extends React.Component {  //this is what wer
     render() {
       return (   //keeps code organzed, putting divs in there
         <tr>
-            <td>{this.props.task}</td>
+            {this.renderTaskSection()}
             {this.renderActionsSection()}
         </tr>
     );
