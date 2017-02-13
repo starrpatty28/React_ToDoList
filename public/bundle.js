@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6282159ca5442b4e5468"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f613e7da9143c84e3375"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -29813,11 +29813,23 @@
 	                        null,
 	                        'React ToDos App'
 	                    ),
-	                    _react2.default.createElement(_createTodo2.default, null),
-	                    _react2.default.createElement(_todosList2.default, { todos: this.state.todos }),
+	                    _react2.default.createElement(_createTodo2.default, { createTask: this.createTask.bind(this) }),
+	                    '  ',
+	                    _react2.default.createElement(_todosList2.default, {
+	                        todos: this.state.todos }),
 	                    '  '
 	                )
 	            );
+	        }
+	    }, {
+	        key: 'createTask',
+	        value: function createTask(task) {
+	            {/*take whatever task and push it through out todos state*/}
+	            this.state.todos({
+	                task: task,
+	                isCompleted: false
+	            });
+	            this.setState({ todos: this.state.todos });{/*this will only render what is different and not the same when creating a task*/}
 	        }
 	    }]);
 
@@ -29866,8 +29878,10 @@
 	      return (//keeps code organzed, putting divs in there
 	        _react2.default.createElement(
 	          "form",
-	          null,
-	          _react2.default.createElement("input", { type: "text", placeholder: "What do I need to do?" }),
+	          { onSubmit: this.handleCreate.bind(this) },
+	          "   ",
+	          _react2.default.createElement("input", { type: "text", placeholder: "What do I need to do?", ref: "createInput" }),
+	          "  ",
 	          _react2.default.createElement(
 	            "button",
 	            null,
@@ -29875,6 +29889,13 @@
 	          )
 	        )
 	      );
+	    }
+	  }, {
+	    key: "handleCreate",
+	    value: function handleCreate(event) {
+	      event.preventDefault();
+
+	      console.log(this.props.createTask);
 	    }
 	  }]);
 
@@ -47173,11 +47194,10 @@
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            null,
-	            'onClick=',
-	            this.onCancelClick.bind(this),
-	            '>Cancel'
-	          )
+	            { onClick: this.onCancelClick.bind(this) },
+	            'Cancel'
+	          ),
+	          '   '
 	        );
 	      }
 
@@ -47190,6 +47210,7 @@
 	            { onClick: this.onEditClick.bind(this) },
 	            'Edit'
 	          ),
+	          '  ',
 	          _react2.default.createElement(
 	            'button',
 	            null,
@@ -47217,12 +47238,12 @@
 	  }, {
 	    key: 'onEditClick',
 	    value: function onEditClick() {
-	      this.setState({ isEditing: true });
+	      this.setState({ isEditing: true }); //when you hit editing button whatever you put in, make it true "make it stick"
 	    }
 	  }, {
 	    key: 'onCancelClick',
 	    value: function onCancelClick() {
-	      this.setState({ isEditing: false });
+	      this.setState({ isEditing: false }); //hiiting cancel takes away the editing state
 	    }
 	  }]);
 
